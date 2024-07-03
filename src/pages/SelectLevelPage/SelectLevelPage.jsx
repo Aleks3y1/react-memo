@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./SelectLevelPage.module.css";
+import { useCustomContext } from "../../hooks/useCustomContext";
 
 export function SelectLevelPage() {
+  const { handleAttemptsChangeOnStart } = useCustomContext();
+
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
@@ -23,6 +26,10 @@ export function SelectLevelPage() {
             </Link>
           </li>
         </ul>
+        <label className={styles.labelText}>
+          3 попытки
+          <input type="checkbox" className={styles.checkBox} onClick={handleAttemptsChangeOnStart} />
+        </label>
       </div>
     </div>
   );
