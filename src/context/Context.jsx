@@ -15,7 +15,6 @@ export const ContextProvider = ({ children }) => {
   const handleAttemptsChange = num => {
     setAttempts(num);
   };
-  console.log(startLife);
 
   return (
     <Context.Provider value={{ attempts, handleAttemptsChange, handleAttemptsChangeOnStart, startLife }}>

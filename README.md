@@ -3,7 +3,7 @@
 В этом репозитории реализован MVP карточкой игры "Мемо" по [тех.заданию](./docs/mvp-spec.md)
 
 Проект задеплоен на gh pages:
-https://skypro-web-developer.github.io/react-memo/
+https://aleks3y1.github.io/react-memo/
 
 ## Разработка
 
