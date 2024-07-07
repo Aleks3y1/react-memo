@@ -1,15 +1,15 @@
 .attemptsBlock {
-    width: 672px;
-    margin: 0 auto;
-    padding: 26px;
-    padding-top: 22px;
-    box-sizing: border-box;
+  width: 672px;
+  margin: 0 auto;
+  padding: 26px;
+  padding-top: 22px;
+  box-sizing: border-box;
 }
 
 .attemptsText {
-    color: #fff;
-    font-family: StratosSkyeng, serif;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 400;
+  color: #fff;
+  font-family: StratosSkyeng, serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
 }
