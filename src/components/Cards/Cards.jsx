@@ -64,9 +64,8 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
 
   useEffect(() => {
     if (attempts === 0) {
-      setPlayerLost(attempts);
+      setPlayerLost(true);
       finishGame(STATUS_LOST);
-      handleAttemptsChange(startLife);
     }
   }, [attempts]);
 
@@ -88,7 +87,10 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     setGameEndDate(null);
     setTimer(getTimerValue(null, null));
     setStatus(STATUS_PREVIEW);
+    handleAttemptsChange(startLife); // Сброс количества жизней при перезапуске игры
+    setPlayerLost(false);
   }
+
   /**
    * Обработка основного действия в игре - открытие карты.
    * После открытия карты игра может пепереходить в следующие состояния
@@ -101,6 +103,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     if (clickedCard.open) {
       return;
     }
+
     // Игровое поле после открытия кликнутой карты
     const nextCards = cards.map(card => {
       if (card.id !== clickedCard.id) {
@@ -127,29 +130,28 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     // Ищем открытые карты, у которых нет пары среди других открытых
     const openCardsWithoutPair = openCards.filter(card => {
       const sameCards = openCards.filter(openCard => card.suit === openCard.suit && card.rank === openCard.rank);
-      if (sameCards.length < 2) {
-        return true;
-      }
-      return false;
+      return sameCards.length < 2;
     });
-    // ниже мне нужно для каждой карточки из массива openCardsWithoutPair проставить статус open: false,
-    if (openCardsWithoutPair.length >= 2 && attempts >= 1) {
+
+    if (openCardsWithoutPair.length >= 2 && attempts > 0) {
       handleAttemptsChange(attempts - 1);
 
-      const closeCards = cards.map(card => {
-        const shouldClose = openCardsWithoutPair.some(openCard => openCard.id === card.id);
+      setTimeout(() => {
+        const closeCards = cards.map(card => {
+          const shouldClose = openCardsWithoutPair.some(openCard => openCard.id === card.id);
 
-        if (shouldClose) {
-          return {
-            ...card,
-            open: false,
-          };
-        }
+          if (shouldClose) {
+            return {
+              ...card,
+              open: false,
+            };
+          }
 
-        return card;
-      });
+          return card;
+        });
 
-      setCards(closeCards);
+        setCards(closeCards);
+      }, 1000); // Таймаут 1 секунда
     }
 
     // "Игрок проиграл", т.к на поле есть две открытые карты без пары
@@ -213,12 +215,12 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             <>
               <div className={styles.timerValue}>
                 <div className={styles.timerDescription}>min</div>
-                <div>{timer.minutes.toString().padStart("2", "0")}</div>
+                <div>{timer.minutes.toString().padStart(2, "0")}</div>
               </div>
               .
               <div className={styles.timerValue}>
                 <div className={styles.timerDescription}>sec</div>
-                <div>{timer.seconds.toString().padStart("2", "0")}</div>
+                <div>{timer.seconds.toString().padStart(2, "0")}</div>
               </div>
             </>
           )}
