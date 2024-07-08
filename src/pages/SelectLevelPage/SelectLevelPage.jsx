@@ -3,10 +3,12 @@ import styles from "./SelectLevelPage.module.css";
 import { useCustomContext } from "../../hooks/useCustomContext";
 import { Button } from "../../components/Button/Button";
 import { useState, useCallback, useEffect } from "react";
+import { LevelStyle } from "./LevelStyle.js";
 
 export function SelectLevelPage() {
   const { handleStartLifeChange } = useCustomContext();
   const [gameLevel, setGameLevel] = useState(0);
+  //const [changeStyle, setChangeStyle] = useState(null);
   const [isEasyMode, setIsEasyMode] = useState(() => {
     const savedEasyMode = localStorage.getItem("isEasyMode");
     return savedEasyMode ? JSON.parse(savedEasyMode) : false;
@@ -46,13 +48,13 @@ export function SelectLevelPage() {
       <div className={styles.modal}>
         <h1 className={styles.title}>Выбери сложность</h1>
         <ul className={styles.levels}>
-          <li className={styles.level} onClick={() => handleLevelChange(3)}>
+          <li className={styles.level} onClick={() => handleLevelChange(3)} style={LevelStyle(gameLevel, 3)}>
             1
           </li>
-          <li className={styles.level} onClick={() => handleLevelChange(6)}>
+          <li className={styles.level} onClick={() => handleLevelChange(6)} style={LevelStyle(gameLevel, 6)}>
             2
           </li>
-          <li className={styles.level} onClick={() => handleLevelChange(9)}>
+          <li className={styles.level} onClick={() => handleLevelChange(9)} style={LevelStyle(gameLevel, 9)}>
             3
           </li>
         </ul>
