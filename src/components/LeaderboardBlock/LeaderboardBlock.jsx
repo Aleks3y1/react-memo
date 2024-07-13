@@ -9,7 +9,7 @@ export function LeaderboardBlock() {
   const sortedLeaderboard = leaderboard
     .slice()
     .sort((a, b) => a.time - b.time)
-    .slice(0, 7);
+    .slice(0, 10);
 
   const startGame = () => {
     navigate("/");
