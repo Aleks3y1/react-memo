@@ -247,6 +247,7 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             isWon={status === STATUS_WON}
             gameDurationSeconds={timer.seconds}
             gameDurationMinutes={timer.minutes}
+            hardMode={startLife}
             onClick={resetGame}
           />
         </div>

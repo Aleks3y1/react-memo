@@ -1,4 +1,5 @@
 import React, { createContext, useState, useCallback, useEffect } from "react";
+import { getLeaderboard } from "../api";
 
 export const Context = createContext(null);
 
@@ -15,6 +16,22 @@ export const ContextProvider = ({ children }) => {
     const savedStartLife = localStorage.getItem("startLife");
     return savedStartLife ? Number(savedStartLife) : ONE_LIFE;
   });
+
+  const [leaderboard, setLeaderboard] = useState([]);
+
+  const handleLeaderboardChange = useCallback(leaders => {
+    setLeaderboard(leaders);
+  }, []);
+
+  useEffect(() => {
+    getLeaderboard()
+      .then(result => {
+        setLeaderboard(result.leaders);
+      })
+      .catch(error => {
+        console.log("Ошибка:", error);
+      });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("attempts", attempts);
@@ -41,7 +58,15 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <Context.Provider
-      value={{ attempts, handleAttemptsChange, handleAttemptsChangeOnStart, startLife, handleStartLifeChange }}
+      value={{
+        attempts,
+        handleAttemptsChange,
+        handleAttemptsChangeOnStart,
+        startLife,
+        handleStartLifeChange,
+        leaderboard,
+        handleLeaderboardChange,
+      }}
     >
       {children}
     </Context.Provider>

@@ -8,7 +8,6 @@ import { LevelStyle } from "./LevelStyle.js";
 export function SelectLevelPage() {
   const { handleStartLifeChange } = useCustomContext();
   const [gameLevel, setGameLevel] = useState(0);
-  //const [changeStyle, setChangeStyle] = useState(null);
   const [isEasyMode, setIsEasyMode] = useState(() => {
     const savedEasyMode = localStorage.getItem("isEasyMode");
     return savedEasyMode ? JSON.parse(savedEasyMode) : false;
@@ -43,10 +42,18 @@ export function SelectLevelPage() {
     }
   }, [gameLevel, navigate]);
 
+  const handleLeaderboard = () => {
+    navigate(`/leaderboard`);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-        <h1 className={styles.title}>Выбери сложность</h1>
+        <h1 className={styles.title}>
+          Выбери
+          <br />
+          сложность
+        </h1>
         <ul className={styles.levels}>
           <li className={styles.level} onClick={() => handleLevelChange(3)} style={LevelStyle(gameLevel, 3)}>
             1
@@ -63,6 +70,9 @@ export function SelectLevelPage() {
           Легкий режим (3 жизни)
         </label>
         <Button onClick={handlePlayClick}>Играть</Button>
+        <p onClick={handleLeaderboard} className={styles.leader_link}>
+          Перейти к лидерборду
+        </p>
       </div>
     </div>
   );
