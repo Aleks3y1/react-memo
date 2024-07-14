@@ -23,6 +23,8 @@ export const ContextProvider = ({ children }) => {
     setLeaderboard(leaders);
   }, []);
 
+  const [hardGame, setHardGame] = useState(null);
+
   useEffect(() => {
     getLeaderboard()
       .then(result => {
@@ -41,6 +43,10 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem("startLife", startLife);
   }, [startLife]);
 
+  useEffect(() => {
+    localStorage.setItem("hardGame", hardGame);
+  }, [hardGame]);
+
   const handleAttemptsChangeOnStart = useCallback(() => {
     const newLife = startLife === ONE_LIFE ? THREE_LIFE : ONE_LIFE;
     setAttempts(newLife);
@@ -56,6 +62,10 @@ export const ContextProvider = ({ children }) => {
     setAttempts(newLife);
   }, []);
 
+  const handleHardGameChange = useCallback(num => {
+    setHardGame(num);
+  }, []);
+
   return (
     <Context.Provider
       value={{
@@ -66,6 +76,7 @@ export const ContextProvider = ({ children }) => {
         handleStartLifeChange,
         leaderboard,
         handleLeaderboardChange,
+        handleHardGameChange,
       }}
     >
       {children}

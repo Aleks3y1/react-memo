@@ -11,8 +11,8 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   const title = isWon ? "Вы победили!" : "Вы проиграли!";
   const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
   const imgAlt = isWon ? "celebration emoji" : "dead emoji";
-  const isHardMode = hardMode === 3;
-  const { handleLeaderboardChange } = useCustomContext();
+  const { handleLeaderboardChange, handleHardGameChange } = useCustomContext();
+  const isHardMode = hardMode !== 3 && handleHardGameChange === 9;
   const resultTime = gameDurationMinutes * 60 + gameDurationSeconds;
   const [isInLeaderboard, setIsInLeaderboard] = useState(false);
   const [name, setName] = useState("");

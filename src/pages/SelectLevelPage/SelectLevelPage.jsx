@@ -6,7 +6,7 @@ import { useState, useCallback, useEffect } from "react";
 import { LevelStyle } from "./LevelStyle.js";
 
 export function SelectLevelPage() {
-  const { handleStartLifeChange } = useCustomContext();
+  const { handleStartLifeChange, handleHardGameChange } = useCustomContext();
   const [gameLevel, setGameLevel] = useState(0);
   const [isEasyMode, setIsEasyMode] = useState(() => {
     const savedEasyMode = localStorage.getItem("isEasyMode");
@@ -28,6 +28,7 @@ export function SelectLevelPage() {
 
   const handleLevelChange = useCallback(level => {
     setGameLevel(level);
+    handleHardGameChange(level);
   }, []);
 
   const handleCheckboxChange = useCallback(() => {
