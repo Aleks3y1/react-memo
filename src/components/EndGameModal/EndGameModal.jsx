@@ -7,26 +7,31 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addLeader, getLeaderboard } from "../../api";
 
-export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, hardMode }) {
+export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, hardGame }) {
   const title = isWon ? "Вы победили!" : "Вы проиграли!";
   const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
   const imgAlt = isWon ? "celebration emoji" : "dead emoji";
-  const { handleLeaderboardChange, handleHardGameChange } = useCustomContext();
-  const isHardMode = hardMode !== 3 && handleHardGameChange === 9;
+  const { handleLeaderboardChange } = useCustomContext();
+  const [isHardMode, setIsHardMode] = useState(false);
   const resultTime = gameDurationMinutes * 60 + gameDurationSeconds;
   const [isInLeaderboard, setIsInLeaderboard] = useState(false);
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIsHardMode(hardGame === 9);
+  }, [hardGame]);
+
+  useEffect(() => {
     if (isWon && isHardMode) {
       getLeaderboard()
         .then(data => {
-          handleLeaderboardChange(data.leaders);
-          const leadersTimes = data.leaders.map(leader => leader.time);
-          if (resultTime < Math.max(...leadersTimes) || data.leaders.length < 10) {
-            setIsInLeaderboard(true);
-          }
+          const leaders = data.leaders.sort((a, b) => a.time - b.time).slice(0, 10);
+          handleLeaderboardChange(leaders);
+          const leadersTimes = leaders.map(leader => leader.time);
+          const isTopTen = leadersTimes.length < 10 || resultTime < Math.max(...leadersTimes);
+          setIsInLeaderboard(isTopTen);
+          console.log(leadersTimes);
         })
         .catch(error => {
           console.error("Ошибка:", error);
@@ -39,6 +44,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
     try {
       const updatedLeaderboard = await addLeader(playerName, resultTime);
       handleLeaderboardChange(updatedLeaderboard.leaders);
+      navigate("/leaderboard");
     } catch (error) {
       console.log("Ошибка:", error);
     }
@@ -52,9 +58,6 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   };
 
   const handleGoToLeaderboard = async () => {
-    if (isWon && isHardMode && isInLeaderboard) {
-      await handleSaveResult();
-    }
     navigate("/leaderboard");
   };
 
@@ -71,6 +74,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
             value={name}
             onChange={e => setName(e.target.value)}
           />
+          <Button onClick={handleSaveResult}>Добавить в лидеры</Button>
         </>
       )}
       {!isInLeaderboard && <h2 className={styles.title}>{title}</h2>}

@@ -23,7 +23,11 @@ export const ContextProvider = ({ children }) => {
     setLeaderboard(leaders);
   }, []);
 
-  const [hardGame, setHardGame] = useState(null);
+  // Инициализация hardGame из localStorage
+  const [hardGame, setHardGame] = useState(() => {
+    const savedHardGame = localStorage.getItem("hardGame");
+    return savedHardGame ? Number(savedHardGame) : null;
+  });
 
   useEffect(() => {
     getLeaderboard()
@@ -77,6 +81,7 @@ export const ContextProvider = ({ children }) => {
         leaderboard,
         handleLeaderboardChange,
         handleHardGameChange,
+        hardGame,
       }}
     >
       {children}

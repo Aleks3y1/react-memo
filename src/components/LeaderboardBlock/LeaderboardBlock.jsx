@@ -6,13 +6,16 @@ import { useNavigate } from "react-router-dom";
 export function LeaderboardBlock() {
   const { leaderboard } = useCustomContext();
   const navigate = useNavigate();
-  const sortedLeaderboard = leaderboard
-    .slice()
-    .sort((a, b) => a.time - b.time)
-    .slice(0, 10);
+  const sortedLeaderboard = leaderboard.sort((a, b) => a.time - b.time).slice(0, 10);
 
   const startGame = () => {
     navigate("/");
+  };
+
+  const formatTime = timeInSeconds => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   };
 
   return (
@@ -37,7 +40,7 @@ export function LeaderboardBlock() {
                 <p>{index + 1}</p>
                 <p>{leader.name}</p>
                 <p></p>
-                <p>{leader.time} сек</p>
+                <p>{formatTime(leader.time)}</p>
               </div>
             </li>
           ))}
