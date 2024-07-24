@@ -43,7 +43,7 @@ function getTimerValue(startDate, endDate) {
  * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
  */
 export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
-  const { attempts, startLife, handleAttemptsChange } = useCustomContext();
+  const { attempts, startLife, handleAttemptsChange, hardGame } = useCustomContext();
   // В cards лежит игровое поле - массив карт и их состояние открыта\закрыта
   const [cards, setCards] = useState([]);
 
@@ -247,6 +247,8 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             isWon={status === STATUS_WON}
             gameDurationSeconds={timer.seconds}
             gameDurationMinutes={timer.minutes}
+            hardMode={startLife}
+            hardGame={hardGame}
             onClick={resetGame}
           />
         </div>

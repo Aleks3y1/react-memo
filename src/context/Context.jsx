@@ -1,4 +1,5 @@
 import React, { createContext, useState, useCallback, useEffect } from "react";
+import { getLeaderboard } from "../api";
 
 export const Context = createContext(null);
 
@@ -16,6 +17,28 @@ export const ContextProvider = ({ children }) => {
     return savedStartLife ? Number(savedStartLife) : ONE_LIFE;
   });
 
+  const [leaderboard, setLeaderboard] = useState([]);
+
+  const handleLeaderboardChange = useCallback(leaders => {
+    setLeaderboard(leaders);
+  }, []);
+
+  // Инициализация hardGame из localStorage
+  const [hardGame, setHardGame] = useState(() => {
+    const savedHardGame = localStorage.getItem("hardGame");
+    return savedHardGame ? Number(savedHardGame) : null;
+  });
+
+  useEffect(() => {
+    getLeaderboard()
+      .then(result => {
+        setLeaderboard(result.leaders);
+      })
+      .catch(error => {
+        console.log("Ошибка:", error);
+      });
+  }, []);
+
   useEffect(() => {
     localStorage.setItem("attempts", attempts);
   }, [attempts]);
@@ -23,6 +46,10 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("startLife", startLife);
   }, [startLife]);
+
+  useEffect(() => {
+    localStorage.setItem("hardGame", hardGame);
+  }, [hardGame]);
 
   const handleAttemptsChangeOnStart = useCallback(() => {
     const newLife = startLife === ONE_LIFE ? THREE_LIFE : ONE_LIFE;
@@ -39,9 +66,23 @@ export const ContextProvider = ({ children }) => {
     setAttempts(newLife);
   }, []);
 
+  const handleHardGameChange = useCallback(num => {
+    setHardGame(num);
+  }, []);
+
   return (
     <Context.Provider
-      value={{ attempts, handleAttemptsChange, handleAttemptsChangeOnStart, startLife, handleStartLifeChange }}
+      value={{
+        attempts,
+        handleAttemptsChange,
+        handleAttemptsChangeOnStart,
+        startLife,
+        handleStartLifeChange,
+        leaderboard,
+        handleLeaderboardChange,
+        handleHardGameChange,
+        hardGame,
+      }}
     >
       {children}
     </Context.Provider>

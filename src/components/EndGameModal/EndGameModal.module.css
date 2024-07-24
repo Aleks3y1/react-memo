@@ -1,6 +1,6 @@
 .modal {
   width: 480px;
-  height: 459px;
+  min-height: 459px;
   border-radius: 12px;
   background: #c2f5ff;
   display: flex;
@@ -12,7 +12,7 @@
 .image {
   width: 96px;
   height: 96px;
-  margin-bottom: 8px;
+  margin: 36px 0 8px 0;
 }
 
 .title {
@@ -23,8 +23,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 48px;
-
   margin-bottom: 28px;
+  text-align: center;
 }
 
 .description {
@@ -46,6 +46,33 @@
   font-style: normal;
   font-weight: 400;
   line-height: 72px;
-
+  text-align: center;
   margin-bottom: 40px;
+}
+
+.leader_name {
+  width: 276px;
+  height: 45px;
+  top: 334px;
+  left: 374px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+  font-family: StratosSkyeng;
+
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: center;
+}
+
+.link_leader {
+  font-family: StratosSkyeng;
+  color: #004980;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: left;
+  text-decoration: underline;
+  margin: 18px 0 48px 0;
+  cursor: pointer;
 }
