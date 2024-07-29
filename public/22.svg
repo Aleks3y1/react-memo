@@ -1,0 +1,18 @@
+<svg width="68.000000" height="68.000000" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<linearGradient x1="42.172886" y1="17.021763" x2="32.368507" y2="25.043531" id="paint_linear_3_5591_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFFFFF"/>
+			<stop offset="1.000000" stop-color="#F0F0F0"/>
+		</linearGradient>
+	</defs>
+	<rect id="Rectangle 27" rx="34.000000" width="68.000000" height="68.000000" fill="#C2F5FF" fill-opacity="1.000000"/>
+	<rect id="Rectangle 2639" x="31.922852" y="9.000000" rx="2.000000" width="24.956610" height="34.760994" transform="rotate(15 31.922852 9.000000)" fill="url(#paint_linear_3_5591_0)" fill-opacity="1.000000"/>
+	<rect id="Rectangle 2639" x="31.922852" y="9.000000" rx="2.000000" width="24.956610" height="34.760994" transform="rotate(15 31.922852 9.000000)" stroke="#E4E4E4" stroke-opacity="1.000000" stroke-width="1.000000"/>
+	<path id="Union" d="M40.6113 26.302C40.1973 25.4818 39.5088 24.8742 38.8154 24.6884C37.6309 24.371 36.0908 24.673 35.4951 26.658C34.9854 28.796 37.002 31.2209 38.7383 33.5057C38.7461 33.5024 38.7539 33.499 38.7617 33.4956C41.4014 32.3882 44.2266 31.2651 44.8525 29.165C45.3291 27.1483 44.0273 26.0846 42.8428 25.7672C42.1494 25.5814 41.3164 25.7816 40.6113 26.302Z" clip-rule="evenodd" fill="#FF4545" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<rect id="Rectangle 2640" x="10.000000" y="24.625076" rx="2.000000" width="24.956610" height="34.760994" transform="rotate(-15 10.000000 24.625076)" fill="#FFFFFF" fill-opacity="1.000000"/>
+	<rect id="Rectangle 2640" x="10.000000" y="24.625076" rx="2.000000" width="24.956610" height="34.760994" transform="rotate(-15 10.000000 24.625076)" stroke="#E4E4E4" stroke-opacity="1.000000" stroke-width="1.000000"/>
+	<path id="Union" d="M25.3145 35.4953C24.5459 34.9918 23.6455 34.8096 22.9521 34.9954C21.7676 35.3128 20.585 36.3447 21.0615 38.3615C21.6885 40.4654 24.6416 41.5572 27.2852 42.6665C27.2881 42.6677 27.291 42.669 27.2939 42.6702L27.2939 42.6702L27.2939 42.6702C27.2959 42.6676 27.2979 42.6651 27.2998 42.6626C29.0342 40.38 30.9277 37.9899 30.4189 35.8542C29.8232 33.8692 28.1641 33.599 26.9795 33.9164C26.2861 34.1021 25.665 34.6918 25.3145 35.4953Z" clip-rule="evenodd" fill="#FF4545" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>
