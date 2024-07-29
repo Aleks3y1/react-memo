@@ -18,12 +18,21 @@ export const ContextProvider = ({ children }) => {
   });
 
   const [leaderboard, setLeaderboard] = useState([]);
+  const [isAlahomoraUsed, setIsAlahomoraUsed] = useState(false);
+  const [isClairvoyanceUsed, setIsClairvoyanceUsed] = useState(false);
+
+  const handleIsAlahomora = useCallback(result => {
+    setIsAlahomoraUsed(result);
+  }, []);
+
+  const handleIsClairvoyance = useCallback(result => {
+    setIsClairvoyanceUsed(result);
+  }, []);
 
   const handleLeaderboardChange = useCallback(leaders => {
     setLeaderboard(leaders);
   }, []);
 
-  // Инициализация hardGame из localStorage
   const [hardGame, setHardGame] = useState(() => {
     const savedHardGame = localStorage.getItem("hardGame");
     return savedHardGame ? Number(savedHardGame) : null;
@@ -82,6 +91,10 @@ export const ContextProvider = ({ children }) => {
         handleLeaderboardChange,
         handleHardGameChange,
         hardGame,
+        isAlahomoraUsed,
+        handleIsAlahomora,
+        isClairvoyanceUsed,
+        handleIsClairvoyance,
       }}
     >
       {children}

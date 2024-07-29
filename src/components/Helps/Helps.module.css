@@ -1,0 +1,22 @@
+.helps_container {
+  display: flex;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.helps_title {
+  font-family: StratosSkyeng, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+}
+
+.helps_text {
+  font-family: StratosSkyeng, serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  margin: 10px 20px 20px 20px;
+}

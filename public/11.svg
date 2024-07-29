@@ -1,0 +1,42 @@
+<svg width="68.000000" height="68.000000" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_3_5615_dd" x="6.000000" y="17.413330" width="56.000000" height="33.475555" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="4" dy="2"/>
+			<feGaussianBlur stdDeviation="2"/>
+			<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+			<feBlend mode="normal" in2="shape" result="effect_innerShadow_1"/>
+		</filter>
+		<linearGradient x1="34.310818" y1="9.075562" x2="34.310818" y2="43.297783" id="paint_linear_3_5616_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#004980"/>
+			<stop offset="1.000000" stop-color="#C2F5FF"/>
+		</linearGradient>
+		<linearGradient x1="34.000168" y1="18.097778" x2="34.000168" y2="34.648888" id="paint_linear_3_5617_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#161616"/>
+			<stop offset="1.000000" stop-color="#0B004B"/>
+		</linearGradient>
+	</defs>
+	<rect id="Rectangle 26" rx="34.000000" width="68.000000" height="68.000000" fill="#C2F5FF" fill-opacity="1.000000"/>
+	<path id="Vector" d="M34 50.88C22.73 50.88 12.16 44.79 6.49 35.02L6 34.15L6.49 33.28C12.16 23.51 22.73 17.41 34 17.41C45.26 17.41 55.83 23.51 61.5 33.28L62 34.15L61.5 35.02C55.83 44.85 45.26 50.88 34 50.88Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+	<path id="Vector" d="M4.84 34.15L5.62 35.51L5.63 35.52Q7.66 39.03 10.41 41.87Q13.56 45.12 17.64 47.48Q21.78 49.87 26.23 50.96Q30 51.88 34 51.88Q38.18 51.88 42.1 50.88Q46.37 49.79 50.34 47.5Q54.37 45.19 57.49 41.99Q60.29 39.11 62.37 35.51L63.15 34.15L62.36 32.77Q60.33 29.26 57.58 26.43Q54.43 23.17 50.35 20.81Q46.21 18.43 41.76 17.33Q37.99 16.41 34 16.41Q30 16.41 26.23 17.33Q21.78 18.43 17.64 20.81Q13.58 23.16 10.44 26.4Q7.67 29.24 5.62 32.78L4.84 34.15ZM6.49 35.02C12.16 44.79 22.73 50.88 34 50.88C45.26 50.88 55.83 44.85 61.5 35.02L62 34.15L61.5 33.28C55.83 23.51 45.26 17.41 34 17.41C22.73 17.41 12.16 23.51 6.49 33.28L6 34.15L6.49 35.02Z" fill="#E4E4E4" fill-opacity="1.000000" fill-rule="evenodd"/>
+	<mask id="mask3_5614" mask-type="alpha" maskUnits="userSpaceOnUse" x="6.000000" y="17.413330" width="56.000000" height="33.475555">
+		<path id="Vector" d="M34 50.88C22.73 50.88 12.16 44.79 6.49 35.02L6 34.15L6.49 33.28C12.16 23.51 22.73 17.41 34 17.41C45.26 17.41 55.83 23.51 61.5 33.28L62 34.15L61.5 35.02C55.83 44.85 45.26 50.88 34 50.88Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</mask>
+	<g mask="url(#mask3_5614)">
+		<g filter="url(#filter_3_5615_dd)">
+			<path id="Vector" d="M34 50.88C22.73 50.88 12.16 44.79 6.49 35.02L6 34.15L6.49 33.28C12.16 23.51 22.73 17.41 34 17.41C45.26 17.41 55.83 23.51 61.5 33.28L62 34.15L61.5 35.02C55.83 44.85 45.26 50.88 34 50.88Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+	<g mask="url(#mask3_5614)">
+		<circle id="Ellipse 427" cx="34.311035" cy="26.186676" r="17.111111" fill="url(#paint_linear_3_5616_0)" fill-opacity="1.000000"/>
+	</g>
+	<g mask="url(#mask3_5614)">
+		<path id="Vector" d="M39.28 26.37C36.36 26.37 34 24 34 21.08C34 20.02 34.31 18.96 34.87 18.16C34.56 18.09 34.24 18.09 34 18.09C29.39 18.09 25.72 21.83 25.72 26.37C25.72 30.97 29.45 34.64 34 34.64C38.6 34.64 42.27 30.91 42.27 26.37C42.27 26.06 42.27 25.75 42.21 25.5C41.4 26.06 40.4 26.37 39.28 26.37Z" fill="url(#paint_linear_3_5617_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>

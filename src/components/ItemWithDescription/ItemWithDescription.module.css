@@ -1,0 +1,37 @@
+.itemContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.description {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c2f5ff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 15;
+  white-space: wrap;
+  width: 222px;
+  border-radius: 12px;
+  color: #004980;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 73, 128, 0.5);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+}
