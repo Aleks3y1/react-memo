@@ -25,6 +25,7 @@ export function LeaderboardBlock() {
   const { leaderboard } = useCustomContext();
   const navigate = useNavigate();
   const sortedLeaderboard = leaderboard.sort((a, b) => a.time - b.time).slice(0, 10);
+  console.log(sortedLeaderboard);
 
   const startGame = () => {
     navigate("/");
@@ -74,26 +75,60 @@ export function LeaderboardBlock() {
                 <span>{index + 1}</span>
                 <span>{leader.name}</span>
                 <span>
-                  <AchiveDescription description={descriptions()}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/${getAchievementIcon(
-                        leader.achievements,
-                        ACHIEVEMENTS.HARD_MODE,
-                        leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? "on" : "off",
-                      )}.svg`}
-                      alt={leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? "сложный режим" : "не сложный режим"}
-                    />
-                  </AchiveDescription>
-                  <AchiveDescription description={descriptionCard()} style={{ marginLeft: "38px" }}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/${getAchievementIcon(
-                        leader.achievements,
-                        ACHIEVEMENTS.NO_SUPERPOWERS,
-                        leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? "on" : "off",
-                      )}.svg`}
-                      alt={leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? "без суперсил" : "с суперсилами"}
-                    />
-                  </AchiveDescription>
+                  {leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? (
+                    <AchiveDescription description={descriptions()}>
+                      <img
+                        src={`${process.env.PUBLIC_URL}/${getAchievementIcon(
+                          leader.achievements,
+                          ACHIEVEMENTS.HARD_MODE,
+                          leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? "on" : "off",
+                        )}.svg`}
+                        alt={
+                          leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? "сложный режим" : "не сложный режим"
+                        }
+                      />
+                    </AchiveDescription>
+                  ) : (
+                    <div className={styles.achive}>
+                      <img
+                        src={`${process.env.PUBLIC_URL}/${getAchievementIcon(
+                          leader.achievements,
+                          ACHIEVEMENTS.HARD_MODE,
+                          leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? "on" : "off",
+                        )}.svg`}
+                        alt={
+                          leader.achievements.includes(ACHIEVEMENTS.HARD_MODE) ? "сложный режим" : "не сложный режим"
+                        }
+                      />
+                    </div>
+                  )}
+                  {leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? (
+                    <AchiveDescription description={descriptionCard()} style={{ marginLeft: "38px" }}>
+                      <img
+                        src={`${process.env.PUBLIC_URL}/${getAchievementIcon(
+                          leader.achievements,
+                          ACHIEVEMENTS.NO_SUPERPOWERS,
+                          leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? "on" : "off",
+                        )}.svg`}
+                        alt={
+                          leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? "без суперсил" : "с суперсилами"
+                        }
+                      />
+                    </AchiveDescription>
+                  ) : (
+                    <div className={styles.achive} style={{ marginLeft: "38px" }}>
+                      <img
+                        src={`${process.env.PUBLIC_URL}/${getAchievementIcon(
+                          leader.achievements,
+                          ACHIEVEMENTS.NO_SUPERPOWERS,
+                          leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? "on" : "off",
+                        )}.svg`}
+                        alt={
+                          leader.achievements.includes(ACHIEVEMENTS.NO_SUPERPOWERS) ? "без суперсил" : "с суперсилами"
+                        }
+                      />
+                    </div>
+                  )}
                 </span>
                 <span>{formatTime(leader.time)}</span>
               </div>

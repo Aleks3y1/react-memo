@@ -46,3 +46,8 @@
   color: #999999;
   margin: 16px 20px 16px 20px;
 }
+
+.achive {
+  position: absolute;
+  display: inline-block;
+}

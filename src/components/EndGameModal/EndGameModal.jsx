@@ -46,7 +46,9 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
 
   useEffect(() => {
     const earnedAchievements = [];
-    if (isHardMode) {
+    const easyGame = localStorage.getItem("isEasyMode");
+
+    if (easyGame !== "true" && isHardMode) {
       earnedAchievements.push(ACHIEVEMENTS.HARD_MODE);
     }
 
@@ -58,7 +60,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   }, [isHardMode, isAlahomoraUsed, isClairvoyanceUsed, isWon]);
 
   const handleSaveResult = async () => {
-    const playerName = name.trim() || "Пользователь";
+    const playerName = name.trim() || "";
     try {
       const updatedLeaderboard = await addLeader(playerName, resultTime, achievements);
       handleLeaderboardChange(updatedLeaderboard.leaders);
