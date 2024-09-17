@@ -7,15 +7,21 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addLeader, getLeaderboard } from "../../api";
 
+const ACHIEVEMENTS = {
+  HARD_MODE: 1,
+  NO_SUPERPOWERS: 2,
+};
+
 export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, hardGame }) {
   const title = isWon ? "Вы победили!" : "Вы проиграли!";
   const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
   const imgAlt = isWon ? "celebration emoji" : "dead emoji";
-  const { handleLeaderboardChange } = useCustomContext();
+  const { handleLeaderboardChange, isAlahomoraUsed, isClairvoyanceUsed } = useCustomContext();
   const [isHardMode, setIsHardMode] = useState(false);
   const resultTime = gameDurationMinutes * 60 + gameDurationSeconds;
   const [isInLeaderboard, setIsInLeaderboard] = useState(false);
   const [name, setName] = useState("");
+  const [achievements, setAchievements] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +37,6 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
           const leadersTimes = leaders.map(leader => leader.time);
           const isTopTen = leadersTimes.length < 10 || resultTime < Math.max(...leadersTimes);
           setIsInLeaderboard(isTopTen);
-          console.log(leadersTimes);
         })
         .catch(error => {
           console.error("Ошибка:", error);
@@ -39,10 +44,25 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
     }
   }, [isWon, resultTime, handleLeaderboardChange, isHardMode]);
 
+  useEffect(() => {
+    const earnedAchievements = [];
+    const easyGame = localStorage.getItem("isEasyMode");
+
+    if (easyGame !== "true" && isHardMode) {
+      earnedAchievements.push(ACHIEVEMENTS.HARD_MODE);
+    }
+
+    if (!isAlahomoraUsed && !isClairvoyanceUsed && isWon) {
+      earnedAchievements.push(ACHIEVEMENTS.NO_SUPERPOWERS);
+    }
+
+    setAchievements(earnedAchievements);
+  }, [isHardMode, isAlahomoraUsed, isClairvoyanceUsed, isWon]);
+
   const handleSaveResult = async () => {
-    const playerName = name.trim() || "Пользователь";
+    const playerName = name.trim() || "";
     try {
-      const updatedLeaderboard = await addLeader(playerName, resultTime);
+      const updatedLeaderboard = await addLeader(playerName, resultTime, achievements);
       handleLeaderboardChange(updatedLeaderboard.leaders);
       navigate("/leaderboard");
     } catch (error) {

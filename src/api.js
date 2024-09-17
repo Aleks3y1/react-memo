@@ -1,5 +1,5 @@
 export const getLeaderboard = async () => {
-  const response = await fetch("https://wedev-api.sky.pro/api/leaderboard");
+  const response = await fetch("https://wedev-api.sky.pro/api/v2/leaderboard");
   if (!response.ok) {
     throw new Error("Ошибка получения список лидеров");
   }
@@ -7,20 +7,19 @@ export const getLeaderboard = async () => {
   return result;
 };
 
-export const addLeader = async (name, time) => {
-  const payload = JSON.stringify({ name, time });
-
-  const response = await fetch("https://wedev-api.sky.pro/api/leaderboard", {
+export async function addLeader(name, time, achievements) {
+  const response = await fetch("https://wedev-api.sky.pro/api/v2/leaderboard", {
     method: "POST",
-    body: payload,
+    body: JSON.stringify({
+      name,
+      time,
+      achievements,
+    }),
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    console.log("Ошибка:", errorText);
-    throw new Error("Ошибка добавление лидера");
+    throw new Error("Ошибка при добавлении лидера");
   }
 
-  const result = await response.json();
-  return result;
-};
+  return await response.json();
+}
